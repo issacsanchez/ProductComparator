@@ -32,18 +32,6 @@ namespace compare.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("compare.Models.Criteria", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Criterias");
-                });
-
             modelBuilder.Entity("compare.Models.Manufacture", b =>
                 {
                     b.Property<long>("Id")
@@ -135,8 +123,6 @@ namespace compare.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long>("CriteriaId");
-
                     b.Property<long>("ProductId");
 
                     b.Property<long>("UserId");
@@ -150,8 +136,6 @@ namespace compare.Migrations
                     b.Property<string>("target");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CriteriaId");
 
                     b.HasIndex("ProductId");
 
@@ -242,11 +226,6 @@ namespace compare.Migrations
 
             modelBuilder.Entity("compare.Models.Review", b =>
                 {
-                    b.HasOne("compare.Models.Criteria", "Criteria")
-                        .WithMany()
-                        .HasForeignKey("CriteriaId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("compare.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")

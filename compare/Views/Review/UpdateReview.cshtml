@@ -45,19 +45,6 @@
     </select>
   </div>
   <div class="form-group">
-    <label asp-for="Criteria"></label>
-    <select class="form-control" asp-for="CriteriaId">
-      @if (Model.Id == 0)
-      {
-        <option disabled selected>Criteria Being Reviewed...</option>
-      }
-      @foreach (Criteria c in ViewBag.Criterias)
-      {
-        <option selected=@(Model.Criteria?.Id == c.Id) value="@c.Id">@c.name</option>
-      }
-    </select>
-  </div>
-  <div class="form-group">
     <label asp-for="score"></label>
     <input asp-for="score" class="form-control" />
   </div>

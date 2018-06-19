@@ -17,8 +17,6 @@ namespace compare.Models
     public User User{ get; set; }
     public long ProductId { get; set; }
     public Product Product { get; set; }
-    public long CriteriaId { get; set; }
-    public Criteria Criteria { get; set; }
 
   }
 }

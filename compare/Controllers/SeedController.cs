@@ -48,10 +48,6 @@ namespace compare.Controllers
       Tag aics = new Tag { name = "aics" };
       Tag cerakote = new Tag { name = "cerakote" };
       Tag one = new Tag { name = "one-piece-bolt" };
-      Criteria value = new Criteria { name = "value" };
-      Criteria performance = new Criteria { name = "value" };
-      Criteria construction = new Criteria { name = "construction" };
-      Criteria features = new Criteria { name = "feautures" };
       User issac = new User { name = "issac" };
       Product b14 = new Product { Category = guns, Manufacture = bergara, name = "B14 Ridge", price = 850.00, upc = 232131 };
       Product m70 = new Product { Category = guns, Manufacture = win, name = "Model 70 Featherweight", price = 999.00, upc = 048702002151 };

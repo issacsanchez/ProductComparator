@@ -12,21 +12,18 @@ namespace compare.Controllers
     private IReviewRepository repo;
     private IUserRepository userRepo;
     private IProductRepository productRepo;
-    private ICriteriaRepository criteriaRepo;
 
-    public ReviewController(IReviewRepository repoR, IUserRepository uRepo, IProductRepository pRepo,ICriteriaRepository cRepo)
+    public ReviewController(IReviewRepository repoR, IUserRepository uRepo, IProductRepository pRepo)
     {
       repo = repoR;
       userRepo = uRepo;
       productRepo = pRepo;
-      criteriaRepo = cRepo;
     }
     public IActionResult Index() => View(repo.Reviews);
     public IActionResult UpdateReview(long key)
     {
       ViewBag.Users = userRepo.Users;
       ViewBag.Products = productRepo.Products;
-      ViewBag.Criterias = criteriaRepo.Criterias;
       return View(key == 0 ? new Review() : repo.GetReview(key));
     }
     [HttpPost]

@@ -25,7 +25,6 @@ namespace compare
       services.AddTransient<IManufactureRepository, ManufactureRepository>();
       services.AddTransient<ICategoryRepository, CategoryRepository>();
       services.AddTransient<IUserRepository, UserRepository>();
-      services.AddTransient<ICriteriaRepository, CriteriaRepository>();
       services.AddTransient<IReviewRepository, ReviewRepository>();
       services.AddTransient<ISpecRepository, SpecRepository>();
       services.AddTransient<IProductSpecRepository, ProductSpecRepository>();

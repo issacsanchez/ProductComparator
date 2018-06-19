@@ -11,9 +11,8 @@ namespace compare.Models
     private DataContext context;
     public ReviewRepository(DataContext ctx) => context = ctx;
 
-    public IEnumerable<Review> Reviews => context.Reviews
-      .Include(p => p.Criteria).Include(l => l.User).Include( c => c.Product).ToArray();
-    public Review GetReview(long key) => context.Reviews.Include(p => p.Criteria).Include(u => u.User).Include(c => c.Product).First(y => y.Id == key);
+    public IEnumerable<Review> Reviews => context.Reviews.Include(l => l.User).Include( c => c.Product).ToArray();
+    public Review GetReview(long key) => context.Reviews.Include(u => u.User).Include(c => c.Product).First(y => y.Id == key);
 
     public void AddReview(Review reviewP)
     {
@@ -26,7 +25,6 @@ namespace compare.Models
       p.score = reviewP.score;
       p.reviewText = reviewP.reviewText;
       p.UserId = reviewP.UserId;
-      p.CriteriaId = reviewP.CriteriaId;
       p.ProductId = reviewP.ProductId;
       context.SaveChanges();
     }
