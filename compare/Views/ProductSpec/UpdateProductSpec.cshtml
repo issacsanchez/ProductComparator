@@ -1,0 +1,67 @@
+﻿@model  ProductSpec
+
+<h3 class="p-2 bg-primary text-white text-center">Update Product Spec</h3>
+<form asp-action="UpdateProductSpec" method="post">
+  <div class="form-group">
+    <label asp-for="Id"></label>
+    <input asp-for="Id" class="form-control" readonly />
+  </div>
+  @if (ViewBag.add == false)
+  {
+    <div class="form-group">
+      <label asp-for="Product"></label>
+      <select class="form-control" asp-for="ProductId">
+        @if (Model.Id == 0)
+        {
+          <option disabled selected>Choose Product</option>
+        }
+        @foreach (Product c in ViewBag.Products)
+        {
+          <option selected=@(Model.Product?.Id == c.Id) value="@c.Id">@c.name</option>
+        }
+      </select>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="form-group">
+          <label asp-for="Spec"></label>
+          <select class="form-control" asp-for="SpecId">
+            <!--2-->
+            @if (Model.Id == 0)
+            {
+              <option disabled selected>Choose Spec</option>
+            }
+            <!--3-->
+            @foreach (Spec m in ViewBag.Specs)
+            {
+              <option selected=@(Model.Spec?.Id == m.Id) value="@m.Id">@m.name</option>
+            }
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="addBtn">Dont see a Spec?</label>
+          <a asp-action="UpdateProductSpec" asp-route-key="@Model.Id" asp-route-add="true"
+             class="btn btn-outline-primary form-control">New</a>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label asp-for="value"></label>
+      <input asp-for="value" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label asp-for="units"></label>
+      <input asp-for="units" class="form-control" />
+    </div>
+  }
+  else
+  {
+    <h4>WUT TO DO</h4>
+  }
+  <div class="text-center">
+    <button class="btn btn-primary" type="submit">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+  </div>
+</form>

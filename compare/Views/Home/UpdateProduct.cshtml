@@ -1,0 +1,89 @@
+﻿@model Product
+<!--1:  GIVEN : I AM A USER
+        WHEN : I ADD A PRODUCT OR UPDATE A PRODUCT
+        THEN : SHOW THIS UPDATE PRODUCT VIEW-->
+<!--2:  GIVEN : I AM A USER
+        WHEN : I DO NOT SPECIFY A PRODUCT
+        THEN: DISPLAY CHOOSE MANUFACTURE AS DEFAULT OPTION SELECT-->
+<!--3:  GIVEN : I AM A USER
+        WHEN : I DO SPECIFY A PRODUCT
+        THEN: DISPLAY MODEL MANUFACTURE AS DEFAULT OPTION SELECT-->
+<!--4:  GIVEN : I AM A USER
+        WHEN : I WANT TO ADD A MANUFACTURE
+        THEN : DISPLAY AN INLINE FORM TO ADD A NEW MANUFACTURE-->
+
+<!--1-->
+<h3 class="p-2 bg-primary text-white text-center">Update Product</h3>
+<form asp-action="UpdateProduct" method="post">
+  <div class="form-group">
+    <label asp-for="Id"></label>
+    <input asp-for="Id" class="form-control" readonly />
+  </div>
+  <div class="form-group">
+    <label asp-for="name"></label>
+    <input asp-for="name" class="form-control" />
+  </div>
+  @if (ViewBag.add == false)
+  {
+    <div class="row">
+      <div class="col-md-8">
+        <div class="form-group">
+          <label asp-for="Manufacture"></label>
+          <select class="form-control" asp-for="ManufactureId">
+            <!--2-->
+            @if (Model.Id == 0)
+            {
+              <option disabled selected>Choose Manufacture</option>
+            }
+            <!--3-->
+            @foreach (Manufacture m in ViewBag.Manufactures)
+            {
+              <option selected=@(Model.Manufacture?.Id == m.Id) value="@m.Id">@m.name</option>
+            }
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="addBtn">Dont see Manufacture?</label>
+          <a asp-action="UpdateProduct" asp-route-key="@Model.Id" asp-route-add="true"
+             class="btn btn-outline-primary form-control">New</a>
+        </div>
+      </div>
+    </div>
+  }
+  else
+  {
+    <!--MAKE IT TO WHERE CAN ADD THE MANUFACTURE TO DATABASE AND THE PRODUCT AT SAME TIME-->
+    <div>STREAMLINE LATER: HIT CANCEL TO GO BACK</div>
+    <div class="form-group">
+      <label asp-for="Manufacture"></label>
+      <input type="text" id="manufacture_name" name="manufacture_name" class="form-control" />
+    </div>
+  }
+  <div class="form-group">
+    <label asp-for="Category"></label>
+    <select class="form-control" asp-for="CategoryId">
+      @if (Model.Id == 0)
+      {
+        <option disabled selected>Choose Category</option>
+      }
+      @foreach (Category c in ViewBag.Categories)
+      {
+        <option selected=@(Model.Category?.Id == c.Id) value="@c.Id">@c.name</option>
+      }
+    </select>
+  </div>
+  <div class="form-group">
+    <label asp-for="price"></label>
+    <input asp-for="price" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label asp-for="upc"></label>
+    <input asp-for="upc" class="form-control" />
+  </div>
+  <div class="text-center">
+    <button class="btn btn-primary" type="submit">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+  </div>
+</form>

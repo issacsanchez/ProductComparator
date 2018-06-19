@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ProductSpec>
+<h3 class="p-2 bg-primary text-white text-center">Product Specs</h3>
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="col-1 font-weight-bold">Id</div>
+    <div class="col font-weight-bold">Product Name</div>
+    <div class="col font-weight-bold">Spec Name</div>
+    <div class="col font-weight-bold">Value</div>
+    <div class="col font-weight-bold">Unit</div>
+    <div class="col-3"></div>
+  </div>
+  @foreach (ProductSpec c in Model)
+  {
+  <div class="row p-2">
+    <div class="col-1">@c.Id</div>
+    <div class="col">@c.Product.name</div>
+    <div class="col">@c.Spec.name</div>
+    <div class="col">@c.value</div>
+    <div class="col">@c.units</div>
+    <div class="col">
+      <form asp-action="DeleteProductSpec" method="post">
+        <a asp-action="UpdateProductSpec" asp-route-id="@c.Id"
+           class="btn btn-outline-primary">Edit</a>
+        <input type="hidden" name="Id" value="@c.Id" />
+        <button type="submit" class="btn btn-outline-danger">
+          Delete
+        </button>
+      </form>
+    </div>
+  </div>
+  }
+  <div class="text-center p-2">
+    <a asp-action="UpdateProductSpec" asp-route-key="0"
+       class="btn btn-primary">Add</a>
+  </div>
+</div>
