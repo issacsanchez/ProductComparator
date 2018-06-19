@@ -30,6 +30,7 @@ namespace compare
       services.AddTransient<ISpecRepository, SpecRepository>();
       services.AddTransient<IProductSpecRepository, ProductSpecRepository>();
       services.AddTransient<ITagRepository, TagRepository>();
+      services.AddTransient<IProductTagRepository, ProductTagRepository>();
       string conString = Configuration["ConnectionStrings:DefaultConnection"];
       services.AddDbContext<DataContext>(options =>
       {

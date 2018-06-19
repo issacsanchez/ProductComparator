@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ProductTag>
+<h3 class="p-2 bg-primary text-white text-center">Product Tags</h3>
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="col-1 font-weight-bold">Id</div>
+    <div class="col font-weight-bold">Product Name</div>
+    <div class="col font-weight-bold">Tag</div>
+    <div class="col font-weight-bold">User</div>
+    <div class="col font-weight-bold">opinion</div>
+    <div class="col-3"></div>
+  </div>
+  @foreach (ProductTag c in Model)
+  {
+    <div class="row p-2">
+      <div class="col-1">@c.Id</div>
+      <div class="col">@c.Product.name</div>
+      <div class="col">@c.Tag.name</div>
+      <div class="col">@c.User.name</div>
+      <div class="col">@c.opinion</div>
+      <div class="col">
+        <form asp-action="DeleteProductTag" method="post">
+          <a asp-action="UpdateProductTag" asp-route-id="@c.Id"
+             class="btn btn-outline-primary">Edit</a>
+          <input type="hidden" name="Id" value="@c.Id" />
+          <button type="submit" class="btn btn-outline-danger">
+            Delete
+          </button>
+        </form>
+      </div>
+    </div>
+  }
+  <div class="text-center p-2">
+    <a asp-action="UpdateProductTag" asp-route-key="0"
+       class="btn btn-primary">Add</a>
+  </div>
+</div>

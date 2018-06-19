@@ -102,6 +102,34 @@ namespace compare.Migrations
                     b.ToTable("ProductSpecs");
                 });
 
+            modelBuilder.Entity("compare.Models.ProductTag", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long>("ProductId");
+
+                    b.Property<long>("TagId");
+
+                    b.Property<long>("UserId");
+
+                    b.Property<int>("opinion");
+
+                    b.Property<string>("units");
+
+                    b.Property<double>("value");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("TagId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ProductTags");
+                });
+
             modelBuilder.Entity("compare.Models.Review", b =>
                 {
                     b.Property<long>("Id")
@@ -191,6 +219,24 @@ namespace compare.Migrations
                     b.HasOne("compare.Models.Spec", "Spec")
                         .WithMany()
                         .HasForeignKey("SpecId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("compare.Models.ProductTag", b =>
+                {
+                    b.HasOne("compare.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("compare.Models.Tag", "Tag")
+                        .WithMany()
+                        .HasForeignKey("TagId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("compare.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

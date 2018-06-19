@@ -14,6 +14,6 @@ namespace compare.Models
     public DbSet<Spec> Specs { get; set; }
     public DbSet<ProductSpec> ProductSpecs { get; set; }
     public DbSet<Tag> Tags { get; set; }
-
+    public DbSet<ProductTag> ProductTags { get; set; }
   }
 }

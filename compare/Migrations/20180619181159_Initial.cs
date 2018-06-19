@@ -145,6 +145,42 @@ namespace compare.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ProductTags",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ProductId = table.Column<long>(nullable: false),
+                    TagId = table.Column<long>(nullable: false),
+                    UserId = table.Column<long>(nullable: false),
+                    opinion = table.Column<int>(nullable: false),
+                    units = table.Column<string>(nullable: true),
+                    value = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductTags", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProductTags_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProductTags_Tags_TagId",
+                        column: x => x.TagId,
+                        principalTable: "Tags",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProductTags_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Reviews",
                 columns: table => new
                 {
@@ -202,6 +238,21 @@ namespace compare.Migrations
                 column: "SpecId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ProductTags_ProductId",
+                table: "ProductTags",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductTags_TagId",
+                table: "ProductTags",
+                column: "TagId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductTags_UserId",
+                table: "ProductTags",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Reviews_CriteriaId",
                 table: "Reviews",
                 column: "CriteriaId");
@@ -223,13 +274,16 @@ namespace compare.Migrations
                 name: "ProductSpecs");
 
             migrationBuilder.DropTable(
+                name: "ProductTags");
+
+            migrationBuilder.DropTable(
                 name: "Reviews");
 
             migrationBuilder.DropTable(
-                name: "Tags");
+                name: "Specs");
 
             migrationBuilder.DropTable(
-                name: "Specs");
+                name: "Tags");
 
             migrationBuilder.DropTable(
                 name: "Criterias");
