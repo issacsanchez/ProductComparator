@@ -144,6 +144,18 @@ namespace compare.Migrations
                     b.ToTable("Specs");
                 });
 
+            modelBuilder.Entity("compare.Models.Tag", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tags");
+                });
+
             modelBuilder.Entity("compare.Models.User", b =>
                 {
                     b.Property<long>("Id")

@@ -13,6 +13,7 @@ namespace compare.Models
     public DbSet<Review> Reviews { get; set; }
     public DbSet<Spec> Specs { get; set; }
     public DbSet<ProductSpec> ProductSpecs { get; set; }
+    public DbSet<Tag> Tags { get; set; }
 
   }
 }

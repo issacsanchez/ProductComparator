@@ -11,7 +11,7 @@ using System;
 namespace compare.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180618204652_Initial")]
+    [Migration("20180619165500_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -143,6 +143,18 @@ namespace compare.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Specs");
+                });
+
+            modelBuilder.Entity("compare.Models.Tag", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("compare.Models.User", b =>
