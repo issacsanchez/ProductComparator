@@ -175,10 +175,13 @@ namespace compare.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     ProductId = table.Column<long>(nullable: false),
                     UserId = table.Column<long>(nullable: false),
+                    bestFor = table.Column<string>(nullable: true),
+                    construction = table.Column<decimal>(nullable: false),
                     date = table.Column<DateTime>(nullable: false),
+                    features = table.Column<decimal>(nullable: false),
+                    performance = table.Column<decimal>(nullable: false),
                     reviewText = table.Column<string>(nullable: true),
-                    score = table.Column<decimal>(nullable: false),
-                    target = table.Column<string>(nullable: true)
+                    value = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {

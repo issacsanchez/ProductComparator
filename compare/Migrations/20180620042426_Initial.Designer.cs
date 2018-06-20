@@ -11,7 +11,7 @@ using System;
 namespace compare.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180619211522_Initial")]
+    [Migration("20180620042426_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -128,13 +128,19 @@ namespace compare.Migrations
 
                     b.Property<long>("UserId");
 
+                    b.Property<string>("bestFor");
+
+                    b.Property<decimal>("construction");
+
                     b.Property<DateTime>("date");
+
+                    b.Property<decimal>("features");
+
+                    b.Property<decimal>("performance");
 
                     b.Property<string>("reviewText");
 
-                    b.Property<decimal>("score");
-
-                    b.Property<string>("target");
+                    b.Property<decimal>("value");
 
                     b.HasKey("Id");
 

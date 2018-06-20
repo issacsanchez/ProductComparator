@@ -5,29 +5,35 @@
     <div class="col-1 font-weight-bold">Id</div>
     <div class="col font-weight-bold">User</div>
     <div class="col font-weight-bold">Product</div>
-    <div class="col font-weight-bold">Score</div>
+    <div class="col font-weight-bold">Performance</div>
+    <div class="col font-weight-bold">construction</div>
+    <div class="col font-weight-bold">value</div>
+    <div class="col font-weight-bold">features</div>
     <div class="col"></div>
   </div>
   @foreach (Review p in Model)
   {
-    <div class="row p-2">
-      <div class="col-1">@p.Id</div>
-      <div class="col">@p.User.name</div>
-      <div class="col">@p.Product.name</div>
-      <div class="col">@p.score</div>
-      <div class="col">
-        <form asp-action="DeleteReview" method="post">
-          <a asp-action="UpdateReview" asp-route-key="@p.Id"
-             class="btn btn-outline-primary">
-            Edit
-          </a>
-          <input type="hidden" name="Id" value="@p.Id" />
-          <button type="submit" class="btn btn-outline-danger">
-            Delete
-          </button>
-        </form>
-      </div>
+  <div class="row p-2">
+    <div class="col-1">@p.Id</div>
+    <div class="col">@p.User.name</div>
+    <div class="col">@p.Product.name</div>
+    <div class="col">@p.performance</div>
+    <div class="col">@p.construction</div>
+    <div class="col">@p.value</div>
+    <div class="col">@p.features</div>
+    <div class="col">
+      <form asp-action="DeleteReview" method="post">
+        <a asp-action="UpdateReview" asp-route-key="@p.Id"
+           class="btn btn-outline-primary">
+          Edit
+        </a>
+        <input type="hidden" name="Id" value="@p.Id" />
+        <button type="submit" class="btn btn-outline-danger">
+          Delete
+        </button>
+      </form>
     </div>
+  </div>
   }
   <div class="text-center p-2">
     <a asp-action="UpdateReview" asp-route-key="0"

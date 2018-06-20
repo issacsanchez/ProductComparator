@@ -22,10 +22,14 @@ namespace compare.Models
     public void UpdateReview(Review reviewP)
     {
       Review p = context.Reviews.Find(reviewP.Id);
-      p.score = reviewP.score;
-      p.reviewText = reviewP.reviewText;
       p.UserId = reviewP.UserId;
       p.ProductId = reviewP.ProductId;
+      p.value = reviewP.value;
+      p.performance = reviewP.performance;
+      p.construction = reviewP.construction;
+      p.features = reviewP.features;
+      p.reviewText = reviewP.reviewText;
+      p.bestFor = reviewP.bestFor;
       context.SaveChanges();
     }
     public void DeleteReview(Review review)
@@ -35,4 +39,3 @@ namespace compare.Models
     }
   }
 }
-//3330
