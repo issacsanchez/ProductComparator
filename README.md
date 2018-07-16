@@ -1,0 +1,3 @@
+- End Goal : Create a application where users may add products and add product competitors, commentable features...
+- Motivation : Overall grasp of .NET , cloud hosting and reinforce design practices.
+- Status : Polymorphic database associations for commentable entities.
